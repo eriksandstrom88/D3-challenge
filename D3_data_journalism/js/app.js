@@ -28,8 +28,8 @@ d3.csv("data/data.csv").then(function(stateData) {
     var yLinearScale=d3.scaleLinear().domain([d3.min(obesity)-1,d3.max(obesity)+1]).range([height,0]);
     var leftAxis=d3.axisLeft(yLinearScale);
     var bottomAxis=d3.axisBottom(xLinearScale);
-    chartGroup.append("g").attr("transform",`translate(0,${height})`).call(bottomAxis);
-    chartGroup.append("g").call(leftAxis);
+    // chartGroup.append("g").attr("transform",`translate(0,${height})`).call(bottomAxis);
+    // chartGroup.append("g").call(leftAxis);
     chartGroup.selectAll("circle")
         .data(stateData)
         .enter()
@@ -50,5 +50,7 @@ d3.csv("data/data.csv").then(function(stateData) {
         .attr("font-size","8px")
         .attr("fill","black");
         // var abbrs = d => 
+    chartGroup.append("g").attr("transform",`translate(0,${height})`).call(bottomAxis);
+    chartGroup.append("g").call(leftAxis);
 }).catch(function(error) {console.log(error)});//closes d3.csv
 // var abbrs=d=>
